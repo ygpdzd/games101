@@ -1,0 +1,8 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/code",
+    "cmake.generator": "MinGW Makefiles",
+    "cmake.buildDirectory": "${workspaceFolder}/build-mingw",
+    "cmake.configureSettings": {
+        "OpenCV_DIR": "D:/MyTemp/download/opencv/sources/build"
+    }
+}
