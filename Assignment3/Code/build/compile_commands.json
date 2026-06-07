@@ -1,0 +1,26 @@
+[
+{
+  "directory": "E:/FileSys/AIProject/cg/games/101/Assignment3/Code/build",
+  "command": "D:\\MyTemp\\winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64ucrt-14.0.0-r2\\mingw64\\bin\\g++.exe  @CMakeFiles/Rasterizer.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Rasterizer.dir\\main.cpp.obj -c E:\\FileSys\\AIProject\\cg\\games\\101\\Assignment3\\Code\\main.cpp",
+  "file": "E:/FileSys/AIProject/cg/games/101/Assignment3/Code/main.cpp",
+  "output": "CMakeFiles/Rasterizer.dir/main.cpp.obj"
+},
+{
+  "directory": "E:/FileSys/AIProject/cg/games/101/Assignment3/Code/build",
+  "command": "D:\\MyTemp\\winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64ucrt-14.0.0-r2\\mingw64\\bin\\g++.exe  @CMakeFiles/Rasterizer.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Rasterizer.dir\\rasterizer.cpp.obj -c E:\\FileSys\\AIProject\\cg\\games\\101\\Assignment3\\Code\\rasterizer.cpp",
+  "file": "E:/FileSys/AIProject/cg/games/101/Assignment3/Code/rasterizer.cpp",
+  "output": "CMakeFiles/Rasterizer.dir/rasterizer.cpp.obj"
+},
+{
+  "directory": "E:/FileSys/AIProject/cg/games/101/Assignment3/Code/build",
+  "command": "D:\\MyTemp\\winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64ucrt-14.0.0-r2\\mingw64\\bin\\g++.exe  @CMakeFiles/Rasterizer.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Rasterizer.dir\\Triangle.cpp.obj -c E:\\FileSys\\AIProject\\cg\\games\\101\\Assignment3\\Code\\Triangle.cpp",
+  "file": "E:/FileSys/AIProject/cg/games/101/Assignment3/Code/Triangle.cpp",
+  "output": "CMakeFiles/Rasterizer.dir/Triangle.cpp.obj"
+},
+{
+  "directory": "E:/FileSys/AIProject/cg/games/101/Assignment3/Code/build",
+  "command": "D:\\MyTemp\\winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64ucrt-14.0.0-r2\\mingw64\\bin\\g++.exe  @CMakeFiles/Rasterizer.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Rasterizer.dir\\Texture.cpp.obj -c E:\\FileSys\\AIProject\\cg\\games\\101\\Assignment3\\Code\\Texture.cpp",
+  "file": "E:/FileSys/AIProject/cg/games/101/Assignment3/Code/Texture.cpp",
+  "output": "CMakeFiles/Rasterizer.dir/Texture.cpp.obj"
+}
+]

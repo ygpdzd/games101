@@ -64,7 +64,7 @@ Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio,
     Eigen::Matrix4f orthographic_scale;
     orthographic_scale << 2 / (r - l), 0, 0, 0,
         0, 2 / (t - b), 0, 0,
-        0, 0, 2 / (n - f), 0,
+        0, 0, -2 / (n - f), 0,
         0, 0, 0, 1;
 
     projection =

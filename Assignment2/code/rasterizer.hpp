@@ -1,0 +1,137 @@
+//
+// Created by goksu on 4/6/19.
+//
+
+#pragma once
+
+#include <Eigen/Eigen>
+#include <algorithm>
+#include "global.hpp"
+#include "Triangle.hpp"
+using namespace Eigen;
+
+namespace rst
+{
+    enum class Buffers
+    {
+        Color = 1,
+        Depth = 2
+    };
+
+    inline Buffers operator|(Buffers a, Buffers b)
+    {
+        return Buffers((int)a | (int)b);
+    }
+
+    inline Buffers operator&(Buffers a, Buffers b)
+    {
+        return Buffers((int)a & (int)b);
+    }
+
+    enum class Primitive
+    {
+        Line,
+        Triangle
+    };
+
+    /*
+     * For the curious : The draw function takes two buffer id's as its arguments. These two structs
+     * make sure that if you mix up with their orders, the compiler won't compile it.
+     * Aka : Type safety
+     * */
+    struct pos_buf_id
+    {
+        int pos_id = 0;
+    };
+
+    struct ind_buf_id
+    {
+        int ind_id = 0;
+    };
+
+    struct col_buf_id
+    {
+        int col_id = 0;
+    };
+
+    class rasterizer
+    {
+    public:
+        rasterizer(int w, int h);
+        pos_buf_id load_positions(const std::vector<Eigen::Vector3f> &positions);
+        ind_buf_id load_indices(const std::vector<Eigen::Vector3i> &indices);
+        col_buf_id load_colors(const std::vector<Eigen::Vector3f> &colors);
+
+        void set_model(const Eigen::Matrix4f &m);
+        void set_view(const Eigen::Matrix4f &v);
+        void set_projection(const Eigen::Matrix4f &p);
+
+        void set_pixel(const Eigen::Vector3f &point, const Eigen::Vector3f &color);
+
+        void clear(Buffers buff);
+
+        void draw(pos_buf_id pos_buffer, ind_buf_id ind_buffer, col_buf_id col_buffer, Primitive type);
+
+        // 切换 SSAA 开关
+        void toggle_ssaa() { use_ssaa = !use_ssaa; }
+        
+        // 获取当前 SSAA 状态
+        bool is_ssaa_enabled() const { return use_ssaa; }
+
+        std::vector<Eigen::Vector3f> &frame_buffer()
+        {
+            // 如果启用了 SSAA，则计算平均颜色
+            if (use_ssaa)
+            {
+                for (int i = 0; i < width * height; ++i)
+                {
+                    Eigen::Vector3f avg_color(0, 0, 0);
+                    for (int s = 0; s < sample_count; s++)
+                    {
+                        avg_color += sample_colors[i][s];
+                    }
+                    avg_color /= sample_count;
+                    frame_buf[i] = avg_color;
+                }
+            }
+            // 如果未启用 SSAA，frame_buf 已经在 rasterize_triangle 中直接设置
+            return frame_buf;
+        }
+
+    private:
+        void draw_line(Eigen::Vector3f begin, Eigen::Vector3f end);
+
+        void rasterize_triangle(const Triangle &t);
+
+        // VERTEX SHADER -> MVP -> Clipping -> /.W -> VIEWPORT -> DRAWLINE/DRAWTRI -> FRAGSHADER
+
+    private:
+        Eigen::Matrix4f model;
+        Eigen::Matrix4f view;
+        Eigen::Matrix4f projection;
+
+        std::map<int, std::vector<Eigen::Vector3f>> pos_buf;
+        std::map<int, std::vector<Eigen::Vector3i>> ind_buf;
+        std::map<int, std::vector<Eigen::Vector3f>> col_buf;
+
+        std::vector<Eigen::Vector3f> frame_buf;
+
+        std::vector<float> depth_buf;
+        int get_index(int x, int y);
+
+        int width, height;
+        
+        // SSAA 开关
+        bool use_ssaa = true;
+        
+        // SSAA 需要的额外缓冲区：存储每个样本的原始数据
+        // 假设 sample_count = 4 (2x2)
+        static constexpr int sample_count = 4;
+        std::vector<std::array<Eigen::Vector3f, sample_count>> sample_colors;
+        std::vector<std::array<float, sample_count>> sample_depths;
+        int next_id = 0;
+        int get_next_id() { return next_id++; }
+        // 辅助函数：获取样本在像素内的偏移量
+        Eigen::Vector2f get_sample_offset(int sample_index);
+    };
+}

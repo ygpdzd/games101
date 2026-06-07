@@ -1,0 +1,3 @@
+E:/FileSys/AIProject/cg/games/101/Assignment2/build-mingw/CMakeFiles/Rasterizer.dir
+E:/FileSys/AIProject/cg/games/101/Assignment2/build-mingw/CMakeFiles/edit_cache.dir
+E:/FileSys/AIProject/cg/games/101/Assignment2/build-mingw/CMakeFiles/rebuild_cache.dir
