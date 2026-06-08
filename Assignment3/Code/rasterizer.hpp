@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <eigen3/Eigen/Eigen>
+#include <Eigen/Eigen>
 #include <optional>
 #include <algorithm>
 #include "global.hpp"
@@ -61,14 +61,14 @@ namespace rst
     {
     public:
         rasterizer(int w, int h);
-        pos_buf_id load_positions(const std::vector<Eigen::Vector3f>& positions);
-        ind_buf_id load_indices(const std::vector<Eigen::Vector3i>& indices);
-        col_buf_id load_colors(const std::vector<Eigen::Vector3f>& colors);
-        col_buf_id load_normals(const std::vector<Eigen::Vector3f>& normals);
+        pos_buf_id load_positions(const std::vector<Eigen::Vector3f> &positions);
+        ind_buf_id load_indices(const std::vector<Eigen::Vector3i> &indices);
+        col_buf_id load_colors(const std::vector<Eigen::Vector3f> &colors);
+        col_buf_id load_normals(const std::vector<Eigen::Vector3f> &normals);
 
-        void set_model(const Eigen::Matrix4f& m);
-        void set_view(const Eigen::Matrix4f& v);
-        void set_projection(const Eigen::Matrix4f& p);
+        void set_model(const Eigen::Matrix4f &m);
+        void set_view(const Eigen::Matrix4f &v);
+        void set_projection(const Eigen::Matrix4f &p);
 
         void set_texture(Texture tex) { texture = tex; }
 
@@ -82,12 +82,26 @@ namespace rst
         void draw(pos_buf_id pos_buffer, ind_buf_id ind_buffer, col_buf_id col_buffer, Primitive type);
         void draw(std::vector<Triangle *> &TriangleList);
 
-        std::vector<Eigen::Vector3f>& frame_buffer() { return frame_buf; }
+        std::vector<Eigen::Vector3f> &frame_buffer()
+        {
+            for (int i = 0; i < width * height; ++i)
+            {
+                Eigen::Vector3f avg_color(0, 0, 0);
+                for (int s = 0; s < sample_count; s++)
+                {
+                    avg_color += sample_colors[i][s];
+                }
+                avg_color /= sample_count;
+                frame_buf[i] = avg_color;
+            }
+
+            return frame_buf;
+        }
 
     private:
         void draw_line(Eigen::Vector3f begin, Eigen::Vector3f end);
 
-        void rasterize_triangle(const Triangle& t, const std::array<Eigen::Vector3f, 3>& world_pos);
+        void rasterize_triangle(const Triangle &t, const std::array<Eigen::Vector3f, 3> &world_pos);
 
         // VERTEX SHADER -> MVP -> Clipping -> /.W -> VIEWPORT -> DRAWLINE/DRAWTRI -> FRAGSHADER
 
@@ -109,6 +123,7 @@ namespace rst
         std::function<Eigen::Vector3f(vertex_shader_payload)> vertex_shader;
 
         std::vector<Eigen::Vector3f> frame_buf;
+
         std::vector<float> depth_buf;
         int get_index(int x, int y);
 
@@ -116,5 +131,12 @@ namespace rst
 
         int next_id = 0;
         int get_next_id() { return next_id++; }
+
+        // ssaa
+        static constexpr int sample_count = 4;
+        std::vector<std::array<Eigen::Vector3f, sample_count>> sample_colors;
+        std::vector<std::array<float, sample_count>> sample_depths;
+        // 辅助函数：获取样本在像素内的偏移量
+        Eigen::Vector2f get_sample_offset(int sample_index);
     };
 }

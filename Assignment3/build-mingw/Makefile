@@ -47,10 +47,10 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = D:\MyTemp\winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64ucrt-14.0.0-r2\mingw64\bin\cmake.exe
+CMAKE_COMMAND = D:\CMake\bin\cmake.exe
 
 # The command to remove a file.
-RM = D:\MyTemp\winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64ucrt-14.0.0-r2\mingw64\bin\cmake.exe -E rm -f
+RM = D:\CMake\bin\cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = E:\FileSys\AIProject\cg\games\101\Assignment3\Code
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\FileSys\AIProject\cg\games\101\Assignment3\Code\build
+CMAKE_BINARY_DIR = E:\FileSys\AIProject\cg\games\101\Assignment3\build-mingw
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	D:\MyTemp\winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64ucrt-14.0.0-r2\mingw64\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	D:\CMake\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\FileSys\AIProject\cg\games\101\Assignment3\Code\build\CMakeFiles E:\FileSys\AIProject\cg\games\101\Assignment3\Code\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\FileSys\AIProject\cg\games\101\Assignment3\build-mingw\CMakeFiles E:\FileSys\AIProject\cg\games\101\Assignment3\build-mingw\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\FileSys\AIProject\cg\games\101\Assignment3\Code\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\FileSys\AIProject\cg\games\101\Assignment3\build-mingw\CMakeFiles 0
 .PHONY : all
 
 # The main clean target

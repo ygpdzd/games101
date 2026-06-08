@@ -7,7 +7,6 @@
 #include <opencv2/opencv.hpp>
 #include <math.h>
 
-
 rst::pos_buf_id rst::rasterizer::load_positions(const std::vector<Eigen::Vector3f> &positions)
 {
     auto id = get_next_id();
@@ -32,7 +31,7 @@ rst::col_buf_id rst::rasterizer::load_colors(const std::vector<Eigen::Vector3f> 
     return {id};
 }
 
-rst::col_buf_id rst::rasterizer::load_normals(const std::vector<Eigen::Vector3f>& normals)
+rst::col_buf_id rst::rasterizer::load_normals(const std::vector<Eigen::Vector3f> &normals)
 {
     auto id = get_next_id();
     nor_buf.emplace(id, normals);
@@ -41,7 +40,6 @@ rst::col_buf_id rst::rasterizer::load_normals(const std::vector<Eigen::Vector3f>
 
     return {id};
 }
-
 
 // Bresenham's line drawing algorithm
 void rst::rasterizer::draw_line(Eigen::Vector3f begin, Eigen::Vector3f end)
@@ -53,199 +51,199 @@ void rst::rasterizer::draw_line(Eigen::Vector3f begin, Eigen::Vector3f end)
 
     Eigen::Vector3f line_color = {255, 255, 255};
 
-    int x,y,dx,dy,dx1,dy1,px,py,xe,ye,i;
+    int x, y, dx, dy, dx1, dy1, px, py, xe, ye, i;
 
-    dx=x2-x1;
-    dy=y2-y1;
-    dx1=fabs(dx);
-    dy1=fabs(dy);
-    px=2*dy1-dx1;
-    py=2*dx1-dy1;
+    dx = x2 - x1;
+    dy = y2 - y1;
+    dx1 = fabs(dx);
+    dy1 = fabs(dy);
+    px = 2 * dy1 - dx1;
+    py = 2 * dx1 - dy1;
 
-    if(dy1<=dx1)
+    if (dy1 <= dx1)
     {
-        if(dx>=0)
+        if (dx >= 0)
         {
-            x=x1;
-            y=y1;
-            xe=x2;
+            x = x1;
+            y = y1;
+            xe = x2;
         }
         else
         {
-            x=x2;
-            y=y2;
-            xe=x1;
+            x = x2;
+            y = y2;
+            xe = x1;
         }
         Eigen::Vector2i point = Eigen::Vector2i(x, y);
-        set_pixel(point,line_color);
-        for(i=0;x<xe;i++)
+        set_pixel(point, line_color);
+        for (i = 0; x < xe; i++)
         {
-            x=x+1;
-            if(px<0)
+            x = x + 1;
+            if (px < 0)
             {
-                px=px+2*dy1;
+                px = px + 2 * dy1;
             }
             else
             {
-                if((dx<0 && dy<0) || (dx>0 && dy>0))
+                if ((dx < 0 && dy < 0) || (dx > 0 && dy > 0))
                 {
-                    y=y+1;
+                    y = y + 1;
                 }
                 else
                 {
-                    y=y-1;
+                    y = y - 1;
                 }
-                px=px+2*(dy1-dx1);
+                px = px + 2 * (dy1 - dx1);
             }
-//            delay(0);
+            //            delay(0);
             Eigen::Vector2i point = Eigen::Vector2i(x, y);
-            set_pixel(point,line_color);
+            set_pixel(point, line_color);
         }
     }
     else
     {
-        if(dy>=0)
+        if (dy >= 0)
         {
-            x=x1;
-            y=y1;
-            ye=y2;
+            x = x1;
+            y = y1;
+            ye = y2;
         }
         else
         {
-            x=x2;
-            y=y2;
-            ye=y1;
+            x = x2;
+            y = y2;
+            ye = y1;
         }
         Eigen::Vector2i point = Eigen::Vector2i(x, y);
-        set_pixel(point,line_color);
-        for(i=0;y<ye;i++)
+        set_pixel(point, line_color);
+        for (i = 0; y < ye; i++)
         {
-            y=y+1;
-            if(py<=0)
+            y = y + 1;
+            if (py <= 0)
             {
-                py=py+2*dx1;
+                py = py + 2 * dx1;
             }
             else
             {
-                if((dx<0 && dy<0) || (dx>0 && dy>0))
+                if ((dx < 0 && dy < 0) || (dx > 0 && dy > 0))
                 {
-                    x=x+1;
+                    x = x + 1;
                 }
                 else
                 {
-                    x=x-1;
+                    x = x - 1;
                 }
-                py=py+2*(dx1-dy1);
+                py = py + 2 * (dx1 - dy1);
             }
-//            delay(0);
+            //            delay(0);
             Eigen::Vector2i point = Eigen::Vector2i(x, y);
-            set_pixel(point,line_color);
+            set_pixel(point, line_color);
         }
     }
 }
 
-auto to_vec4(const Eigen::Vector3f& v3, float w = 1.0f)
+auto to_vec4(const Eigen::Vector3f &v3, float w = 1.0f)
 {
     return Vector4f(v3.x(), v3.y(), v3.z(), w);
 }
 
-static bool insideTriangle(int x, int y, const Vector4f* _v){
+static bool insideTriangle(int x, int y, const Vector4f *_v)
+{
     Vector3f v[3];
-    for(int i=0;i<3;i++)
-        v[i] = {_v[i].x(),_v[i].y(), 1.0};
-    Vector3f f0,f1,f2;
+    for (int i = 0; i < 3; i++)
+        v[i] = {_v[i].x(), _v[i].y(), 1.0};
+    Vector3f f0, f1, f2;
     f0 = v[1].cross(v[0]);
     f1 = v[2].cross(v[1]);
     f2 = v[0].cross(v[2]);
-    Vector3f p(x,y,1.);
-    if((p.dot(f0)*f0.dot(v[2])>0) && (p.dot(f1)*f1.dot(v[0])>0) && (p.dot(f2)*f2.dot(v[1])>0))
+    Vector3f p(x, y, 1.);
+    if ((p.dot(f0) * f0.dot(v[2]) > 0) && (p.dot(f1) * f1.dot(v[0]) > 0) && (p.dot(f2) * f2.dot(v[1]) > 0))
         return true;
     return false;
 }
 
-static std::tuple<float, float, float> computeBarycentric2D(float x, float y, const Vector4f* v){
-    float c1 = (x*(v[1].y() - v[2].y()) + (v[2].x() - v[1].x())*y + v[1].x()*v[2].y() - v[2].x()*v[1].y()) / (v[0].x()*(v[1].y() - v[2].y()) + (v[2].x() - v[1].x())*v[0].y() + v[1].x()*v[2].y() - v[2].x()*v[1].y());
-    float c2 = (x*(v[2].y() - v[0].y()) + (v[0].x() - v[2].x())*y + v[2].x()*v[0].y() - v[0].x()*v[2].y()) / (v[1].x()*(v[2].y() - v[0].y()) + (v[0].x() - v[2].x())*v[1].y() + v[2].x()*v[0].y() - v[0].x()*v[2].y());
-    float c3 = (x*(v[0].y() - v[1].y()) + (v[1].x() - v[0].x())*y + v[0].x()*v[1].y() - v[1].x()*v[0].y()) / (v[2].x()*(v[0].y() - v[1].y()) + (v[1].x() - v[0].x())*v[2].y() + v[0].x()*v[1].y() - v[1].x()*v[0].y());
-    return {c1,c2,c3};
+static std::tuple<float, float, float> computeBarycentric2D(float x, float y, const Vector4f *v)
+{
+    float c1 = (x * (v[1].y() - v[2].y()) + (v[2].x() - v[1].x()) * y + v[1].x() * v[2].y() - v[2].x() * v[1].y()) / (v[0].x() * (v[1].y() - v[2].y()) + (v[2].x() - v[1].x()) * v[0].y() + v[1].x() * v[2].y() - v[2].x() * v[1].y());
+    float c2 = (x * (v[2].y() - v[0].y()) + (v[0].x() - v[2].x()) * y + v[2].x() * v[0].y() - v[0].x() * v[2].y()) / (v[1].x() * (v[2].y() - v[0].y()) + (v[0].x() - v[2].x()) * v[1].y() + v[2].x() * v[0].y() - v[0].x() * v[2].y());
+    float c3 = (x * (v[0].y() - v[1].y()) + (v[1].x() - v[0].x()) * y + v[0].x() * v[1].y() - v[1].x() * v[0].y()) / (v[2].x() * (v[0].y() - v[1].y()) + (v[1].x() - v[0].x()) * v[2].y() + v[0].x() * v[1].y() - v[1].x() * v[0].y());
+    return {c1, c2, c3};
 }
 
-void rst::rasterizer::draw(std::vector<Triangle *> &TriangleList) {
+void rst::rasterizer::draw(std::vector<Triangle *> &TriangleList)
+{
 
     float f1 = (50 - 0.1) / 2.0;
     float f2 = (50 + 0.1) / 2.0;
 
     Eigen::Matrix4f mvp = projection * view * model;
-    for (const auto& t:TriangleList)
+    for (const auto &t : TriangleList)
     {
         Triangle newtri = *t;
 
-        std::array<Eigen::Vector4f, 3> mm {
-                (view * model * t->v[0]),
-                (view * model * t->v[1]),
-                (view * model * t->v[2])
-        };
+        std::array<Eigen::Vector4f, 3> mm{
+            (view * model * t->v[0]),
+            (view * model * t->v[1]),
+            (view * model * t->v[2])};
 
         std::array<Eigen::Vector3f, 3> viewspace_pos;
 
-        std::transform(mm.begin(), mm.end(), viewspace_pos.begin(), [](auto& v) {
-            return v.template head<3>();
-        });
+        std::transform(mm.begin(), mm.end(), viewspace_pos.begin(), [](auto &v)
+                       { return v.template head<3>(); });
 
         Eigen::Vector4f v[] = {
-                mvp * t->v[0],
-                mvp * t->v[1],
-                mvp * t->v[2]
-        };
-        //Homogeneous division
-        for (auto& vec : v) {
-            vec.x()/=vec.w();
-            vec.y()/=vec.w();
-            vec.z()/=vec.w();
+            mvp * t->v[0],
+            mvp * t->v[1],
+            mvp * t->v[2]};
+        // Homogeneous division
+        for (auto &vec : v)
+        {
+            vec.x() /= vec.w();
+            vec.y() /= vec.w();
+            vec.z() /= vec.w();
         }
 
         Eigen::Matrix4f inv_trans = (view * model).inverse().transpose();
         Eigen::Vector4f n[] = {
-                inv_trans * to_vec4(t->normal[0], 0.0f),
-                inv_trans * to_vec4(t->normal[1], 0.0f),
-                inv_trans * to_vec4(t->normal[2], 0.0f)
-        };
+            inv_trans * to_vec4(t->normal[0], 0.0f),
+            inv_trans * to_vec4(t->normal[1], 0.0f),
+            inv_trans * to_vec4(t->normal[2], 0.0f)};
 
-        //Viewport transformation
-        for (auto & vert : v)
+        // Viewport transformation
+        for (auto &vert : v)
         {
-            vert.x() = 0.5*width*(vert.x()+1.0);
-            vert.y() = 0.5*height*(vert.y()+1.0);
+            vert.x() = 0.5 * width * (vert.x() + 1.0);
+            vert.y() = 0.5 * height * (vert.y() + 1.0);
             vert.z() = vert.z() * f1 + f2;
         }
 
         for (int i = 0; i < 3; ++i)
         {
-            //screen space coordinates
+            // screen space coordinates
             newtri.setVertex(i, v[i]);
         }
 
         for (int i = 0; i < 3; ++i)
         {
-            //view space normal
+            // view space normal
             newtri.setNormal(i, n[i].head<3>());
         }
 
-        newtri.setColor(0, 148,121.0,92.0);
-        newtri.setColor(1, 148,121.0,92.0);
-        newtri.setColor(2, 148,121.0,92.0);
+        newtri.setColor(0, 148, 121.0, 92.0);
+        newtri.setColor(1, 148, 121.0, 92.0);
+        newtri.setColor(2, 148, 121.0, 92.0);
 
         // Also pass view space vertice position
         rasterize_triangle(newtri, viewspace_pos);
     }
 }
 
-static Eigen::Vector3f interpolate(float alpha, float beta, float gamma, const Eigen::Vector3f& vert1, const Eigen::Vector3f& vert2, const Eigen::Vector3f& vert3, float weight)
+static Eigen::Vector3f interpolate(float alpha, float beta, float gamma, const Eigen::Vector3f &vert1, const Eigen::Vector3f &vert2, const Eigen::Vector3f &vert3, float weight)
 {
     return (alpha * vert1 + beta * vert2 + gamma * vert3) / weight;
 }
 
-static Eigen::Vector2f interpolate(float alpha, float beta, float gamma, const Eigen::Vector2f& vert1, const Eigen::Vector2f& vert2, const Eigen::Vector2f& vert3, float weight)
+static Eigen::Vector2f interpolate(float alpha, float beta, float gamma, const Eigen::Vector2f &vert1, const Eigen::Vector2f &vert2, const Eigen::Vector2f &vert3, float weight)
 {
     auto u = (alpha * vert1[0] + beta * vert2[0] + gamma * vert3[0]);
     auto v = (alpha * vert1[1] + beta * vert2[1] + gamma * vert3[1]);
@@ -256,44 +254,112 @@ static Eigen::Vector2f interpolate(float alpha, float beta, float gamma, const E
     return Eigen::Vector2f(u, v);
 }
 
-//Screen space rasterization
-void rst::rasterizer::rasterize_triangle(const Triangle& t, const std::array<Eigen::Vector3f, 3>& view_pos) 
+// Screen space rasterization
+void rst::rasterizer::rasterize_triangle(const Triangle &t, const std::array<Eigen::Vector3f, 3> &view_pos)
 {
+    auto v = t.toVector4();
     // TODO: From your HW3, get the triangle rasterization code.
+    // 待办：从你的作业3（HW3）中获取三角形光栅化的代码。
+    // （提示：你需要实现遍历三角形包围盒内的像素，并判断像素是否在三角形内部。）
+    // 启用 SSAA 时的多采样光栅化
+    int min_x = std::min(v[0].x(), std::min(v[1].x(), v[2].x()));
+    int max_x = std::max(v[0].x(), std::max(v[1].x(), v[2].x()));
+    int min_y = std::min(v[0].y(), std::min(v[1].y(), v[2].y()));
+    int max_y = std::max(v[0].y(), std::max(v[1].y(), v[2].y()));
+
+    min_x = std::max(0, min_x);
+    min_y = std::max(0, min_y);
+    max_x = std::min(width - 1, max_x);
+    max_y = std::min(height - 1, max_y);
+
+    for (int i = min_x; i <= max_x; i++)
+    {
+        for (int j = min_y; j <= max_y; j++)
+        {
+            for (int s = 0; s < sample_count; s++)
+            {
+                Eigen::Vector2f offset = get_sample_offset(s);
+                float sample_x = i + offset.x();
+                float sample_y = j + offset.y();
+
+                if (insideTriangle(sample_x, sample_y, t.v))
+                {
+                    int ind = get_index(i, j);
+                    auto [alpha, beta, gamma] = computeBarycentric2D(sample_x, sample_y, t.v);
+                    float w_reciprocal = 1.0 / (alpha / v[0].w() + beta / v[1].w() + gamma / v[2].w());
+                    float z_interpolated = alpha * v[0].z() / v[0].w() + beta * v[1].z() / v[1].w() + gamma * v[2].z() / v[2].w();
+                    z_interpolated *= w_reciprocal;
+
+                    if (z_interpolated < sample_depths[ind][s])
+                    {
+                        sample_depths[ind][s] = z_interpolated;
+                        Vector3f interpolated_color = alpha * t.color[0] + beta * t.color[1] + gamma * t.color[2];
+                        Vector3f interpolated_normal = alpha * t.normal[0] + beta * t.normal[1] + gamma * t.normal[2];
+                        Vector2f interpolated_texcoords = alpha * t.tex_coords[0] + beta * t.tex_coords[1] + gamma * t.tex_coords[2];
+                        Vector3f interpolated_shadingcoords = alpha * view_pos[0] + beta * view_pos[1] + gamma * view_pos[2];
+
+                        fragment_shader_payload payload(interpolated_color, interpolated_normal.normalized(), interpolated_texcoords, texture ? &*texture : nullptr);
+                        payload.view_pos = interpolated_shadingcoords;
+                        auto pixel_color = fragment_shader(payload);
+                        sample_colors[ind][s] = pixel_color;
+                    }
+                }
+            }
+        }
+    }
     // TODO: Inside your rasterization loop:
+    // 待办：在你的光栅化循环内部：
+
     //    * v[i].w() is the vertex view space depth value z.
+    //    * v[i].w() 是顶点在视图空间（View Space）中的深度值 z。
+    //      （注意：在透视除法之前，齐次坐标的 w 分量通常对应视图空间的 -z 或 z，具体取决于坐标系定义，这里用于后续的深度插值修正。）
+
     //    * Z is interpolated view space depth for the current pixel
+    //    * Z 是当前像素插值得到的视图空间深度。
+
     //    * zp is depth between zNear and zFar, used for z-buffer
+    //    * zp 是介于近裁剪面（zNear）和远裁剪面（zFar）之间的深度值，用于深度缓冲区（Z-Buffer）测试。
 
     // float Z = 1.0 / (alpha / v[0].w() + beta / v[1].w() + gamma / v[2].w());
     // float zp = alpha * v[0].z() / v[0].w() + beta * v[1].z() / v[1].w() + gamma * v[2].z() / v[2].w();
     // zp *= Z;
+    // （以上三行是计算正确透视校正深度值的公式参考：
+    //  Z 是透视校正后的深度倒数因子；
+    //  zp 是经过透视校正后的、映射到 [zNear, zFar] 范围的线性深度值，用于写入 depth_buf。）
 
     // TODO: Interpolate the attributes:
+    // 待办：插值属性：
+
     // auto interpolated_color
     // auto interpolated_normal
     // auto interpolated_texcoords
     // auto interpolated_shadingcoords
+    // （你需要使用重心坐标 alpha, beta, gamma 对颜色、法线、纹理坐标和着色位置进行透视校正插值。）
 
     // Use: fragment_shader_payload payload( interpolated_color, interpolated_normal.normalized(), interpolated_texcoords, texture ? &*texture : nullptr);
-    // Use: payload.view_pos = interpolated_shadingcoords;
-    // Use: Instead of passing the triangle's color directly to the frame buffer, pass the color to the shaders first to get the final color;
-    // Use: auto pixel_color = fragment_shader(payload);
+    // 使用：构造片段着色器负载对象 payload，传入插值后的颜色、归一化后的法线、插值后的纹理坐标以及纹理指针（如果存在）。
 
- 
+    // Use: payload.view_pos = interpolated_shadingcoords;
+    // 使用：将插值后的着色位置（视图空间坐标）赋值给 payload.view_pos。
+
+    // Use: Instead of passing the triangle's color directly to the frame buffer, pass the color to the shaders first to get the final color;
+    // 使用：不要直接将三角形的颜色写入帧缓冲区，而是先传递给着色器以获取最终颜色；
+
+    // Use: auto pixel_color = fragment_shader(payload);
+    // 使用：调用片段着色器函数 fragment_shader(payload) 计算得到最终的像素颜色 pixel_color。
 }
 
-void rst::rasterizer::set_model(const Eigen::Matrix4f& m)
+void rst::rasterizer::set_model(const Eigen::Matrix4f &m)
 {
     model = m;
 }
 
-void rst::rasterizer::set_view(const Eigen::Matrix4f& v)
+void rst::rasterizer::set_view(const Eigen::Matrix4f &v)
 {
     view = v;
 }
 
-void rst::rasterizer::set_projection(const Eigen::Matrix4f& p)
+void rst::rasterizer::set_projection(const Eigen::Matrix4f &p)
 {
     projection = p;
 }
@@ -315,18 +381,29 @@ rst::rasterizer::rasterizer(int w, int h) : width(w), height(h)
     frame_buf.resize(w * h);
     depth_buf.resize(w * h);
 
+    // 修正：大小应为 w * h，因为每个元素本身就是一个包含 sample_count 个样本的 std::array
+    sample_depths.resize(w * h);
+    sample_colors.resize(w * h);
+
+    for (int i = 0; i < w * h; ++i)
+    {
+        // 初始化每个像素内的 4 个样本
+        std::fill(sample_depths[i].begin(), sample_depths[i].end(), std::numeric_limits<float>::infinity());
+        std::fill(sample_colors[i].begin(), sample_colors[i].end(), Eigen::Vector3f{0, 0, 0});
+    }
+
     texture = std::nullopt;
 }
 
 int rst::rasterizer::get_index(int x, int y)
 {
-    return (height-y)*width + x;
+    return (height - 1 - y) * width + x;
 }
 
 void rst::rasterizer::set_pixel(const Vector2i &point, const Eigen::Vector3f &color)
 {
-    //old index: auto ind = point.y() + point.x() * width;
-    int ind = (height-point.y())*width + point.x();
+    // old index: auto ind = point.y() + point.x() * width;
+    int ind = (height - point.y()) * width + point.x();
     frame_buf[ind] = color;
 }
 
@@ -340,3 +417,20 @@ void rst::rasterizer::set_fragment_shader(std::function<Eigen::Vector3f(fragment
     fragment_shader = frag_shader;
 }
 
+Eigen::Vector2f rst::rasterizer::get_sample_offset(int sample_index)
+{
+    // 2x2 grid offsets
+    switch (sample_index)
+    {
+    case 0:
+        return Eigen::Vector2f(0.25f, 0.25f);
+    case 1:
+        return Eigen::Vector2f(0.75f, 0.25f);
+    case 2:
+        return Eigen::Vector2f(0.25f, 0.75f);
+    case 3:
+        return Eigen::Vector2f(0.75f, 0.75f);
+    default:
+        return Eigen::Vector2f(0.5f, 0.5f);
+    }
+}

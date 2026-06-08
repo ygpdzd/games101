@@ -450,6 +450,18 @@
 			"value" : "D:/MyTemp/winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64ucrt-14.0.0-r2/mingw64/bin/dlltool.exe"
 		},
 		{
+			"name" : "CMAKE_EDIT_COMMAND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to cache edit program executable."
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "D:/CMake/bin/cmake-gui.exe"
+		},
+		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
 			"properties" : 
 			[
@@ -1339,10 +1351,10 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for OpenCV."
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "PATH",
+			"type" : "UNINITIALIZED",
 			"value" : "D:/MyTemp/download/opencv/sources/build"
 		},
 		{
