@@ -15,6 +15,7 @@ target_include_directories(Rasterizer PRIVATE
 
 # 如果存在 eigen3 子目录，也添加到包含路径
 get_filename_component(EIGEN_PARENT_DIR "${EIGEN3_INCLUDE_DIR}" DIRECTORY)
+
 if(EXISTS "${EIGEN_PARENT_DIR}/eigen3")
     target_include_directories(Rasterizer PRIVATE
         ${EIGEN_PARENT_DIR}

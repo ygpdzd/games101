@@ -1,0 +1,3 @@
+E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/test-config/CMakeFiles/BezierCurve.dir
+E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/test-config/CMakeFiles/edit_cache.dir
+E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/test-config/CMakeFiles/rebuild_cache.dir

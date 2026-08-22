@@ -1,0 +1,10 @@
+^E:\FILESYS\AIPROJECT\CG\GAMES\101\ASSIGNMENT4\CODE\CMAKELISTS.TXT
+setlocal
+D:\CMake\bin\cmake.exe -SE:/FileSys/AIProject/cg/games/101/Assignment4/code -BE:/FileSys/AIProject/cg/games/101/Assignment4/code/build --check-stamp-file E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

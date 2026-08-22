@@ -162,9 +162,9 @@ Eigen::Vector3f texture_fragment_shader(const fragment_shader_payload &payload)
 /// @return 计算得到的颜色值
 Eigen::Vector3f phong_fragment_shader(const fragment_shader_payload &payload)
 {
-    Eigen::Vector3f ka = Eigen::Vector3f(0.005, 0.005, 0.005);
-    Eigen::Vector3f kd = payload.color;
-    Eigen::Vector3f ks = Eigen::Vector3f(0.7937, 0.7937, 0.7937);
+    Eigen::Vector3f ka = Eigen::Vector3f(0.005, 0.005, 0.005);    // 环境光
+    Eigen::Vector3f kd = payload.color;                           // 漫反射光
+    Eigen::Vector3f ks = Eigen::Vector3f(0.7937, 0.7937, 0.7937); // 镜面反射光
 
     auto l1 = light{{20, 20, 20}, {500, 500, 500}};
     auto l2 = light{{-20, 20, 0}, {500, 500, 500}};
@@ -319,6 +319,7 @@ Eigen::Vector3f bump_fragment_shader(const fragment_shader_payload &payload)
 
     auto h = [&](float u_coord, float v_coord) -> float
     {
+        // 这里不用除255
         return payload.texture->getColor(u_coord, v_coord).x();
     };
 
@@ -343,22 +344,10 @@ Eigen::Vector3f bump_fragment_shader(const fragment_shader_payload &payload)
      * 4. 将扰动法线变换到世界空间：n = normalize(TBN * ln)
      */
     Eigen::Vector3f result_color = {0, 0, 0};
+    result_color = perturbed_normal;
 
-    for (auto &light : lights)
-    {
-        Vector3f ambient = ka.cwiseProduct(amb_light_intensity);
-        float r = (light.position - point).norm();
-        Vector3f light_dir = (light.position - point).normalized();
-        Vector3f diffuse = kd.cwiseProduct(light.intensity) / r / r * std::max(0.0f, float(perturbed_normal.dot(light_dir)));
-
-        Vector3f view_dir = (eye_pos - point).normalized();
-        Vector3f reflect_dir = (2.0f * perturbed_normal.dot(light_dir)) * perturbed_normal - light_dir;
-        Vector3f specular = ks.cwiseProduct(light.intensity) / r / r * pow(std::max(0.0f, float(reflect_dir.dot(view_dir))), p);
-
-        result_color += ambient + diffuse + specular;
-    }
-
-    return (perturbed_normal.normalized() + Eigen::Vector3f(1.0f, 1.0f, 1.0f)) / 2.0f * 255.0f;
+    // 直接输出法向量不用blingphong模型
+    return result_color * 255.0f;
 }
 
 int main(int argc, const char **argv)

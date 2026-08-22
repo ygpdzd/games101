@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B4E3474C-F989-320E-94A9-2DACEF254954}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>BezierCurve</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BezierCurve.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BezierCurve</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">BezierCurve.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">BezierCurve</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">BezierCurve.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">BezierCurve</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">BezierCurve.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">BezierCurve</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/MyTemp/download/opencv/sources/build" /external:I "D:/MyTemp/download/opencv/sources/include" /external:I "D:/MyTemp/download/opencv/sources/modules/core/include" /external:I "D:/MyTemp/download/opencv/sources/modules/flann/include" /external:I "D:/MyTemp/download/opencv/sources/modules/imgproc/include" /external:I "D:/MyTemp/download/opencv/sources/modules/ml/include" /external:I "D:/MyTemp/download/opencv/sources/modules/photo/include" /external:I "D:/MyTemp/download/opencv/sources/modules/dnn/include" /external:I "D:/MyTemp/download/opencv/sources/modules/features2d/include" /external:I "D:/MyTemp/download/opencv/sources/modules/imgcodecs/include" /external:I "D:/MyTemp/download/opencv/sources/modules/videoio/include" /external:I "D:/MyTemp/download/opencv/sources/modules/calib3d/include" /external:I "D:/MyTemp/download/opencv/sources/modules/highgui/include" /external:I "D:/MyTemp/download/opencv/sources/modules/objdetect/include" /external:I "D:/MyTemp/download/opencv/sources/modules/stitching/include" /external:I "D:/MyTemp/download/opencv/sources/modules/ts/include" /external:I "D:/MyTemp/download/opencv/sources/modules/video/include" /external:I "D:/MyTemp/download/opencv/sources/modules/gapi/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyTemp\download\opencv\sources\build;D:\MyTemp\download\opencv\sources\include;D:\MyTemp\download\opencv\sources\modules\core\include;D:\MyTemp\download\opencv\sources\modules\flann\include;D:\MyTemp\download\opencv\sources\modules\imgproc\include;D:\MyTemp\download\opencv\sources\modules\ml\include;D:\MyTemp\download\opencv\sources\modules\photo\include;D:\MyTemp\download\opencv\sources\modules\dnn\include;D:\MyTemp\download\opencv\sources\modules\features2d\include;D:\MyTemp\download\opencv\sources\modules\imgcodecs\include;D:\MyTemp\download\opencv\sources\modules\videoio\include;D:\MyTemp\download\opencv\sources\modules\calib3d\include;D:\MyTemp\download\opencv\sources\modules\highgui\include;D:\MyTemp\download\opencv\sources\modules\objdetect\include;D:\MyTemp\download\opencv\sources\modules\stitching\include;D:\MyTemp\download\opencv\sources\modules\ts\include;D:\MyTemp\download\opencv\sources\modules\video\include;D:\MyTemp\download\opencv\sources\modules\gapi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyTemp\download\opencv\sources\build;D:\MyTemp\download\opencv\sources\include;D:\MyTemp\download\opencv\sources\modules\core\include;D:\MyTemp\download\opencv\sources\modules\flann\include;D:\MyTemp\download\opencv\sources\modules\imgproc\include;D:\MyTemp\download\opencv\sources\modules\ml\include;D:\MyTemp\download\opencv\sources\modules\photo\include;D:\MyTemp\download\opencv\sources\modules\dnn\include;D:\MyTemp\download\opencv\sources\modules\features2d\include;D:\MyTemp\download\opencv\sources\modules\imgcodecs\include;D:\MyTemp\download\opencv\sources\modules\videoio\include;D:\MyTemp\download\opencv\sources\modules\calib3d\include;D:\MyTemp\download\opencv\sources\modules\highgui\include;D:\MyTemp\download\opencv\sources\modules\objdetect\include;D:\MyTemp\download\opencv\sources\modules\stitching\include;D:\MyTemp\download\opencv\sources\modules\ts\include;D:\MyTemp\download\opencv\sources\modules\video\include;D:\MyTemp\download\opencv\sources\modules\gapi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\MyTemp\download\opencv\sources\build\lib\libopencv_gapi4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_highgui4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_ml4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_objdetect4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_photo4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_stitching4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_video4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_videoio4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_imgcodecs4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_dnn4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_calib3d4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_features2d4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_flann4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_imgproc4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_core4120.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/Debug/BezierCurve.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/Debug/BezierCurve.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/MyTemp/download/opencv/sources/build" /external:I "D:/MyTemp/download/opencv/sources/include" /external:I "D:/MyTemp/download/opencv/sources/modules/core/include" /external:I "D:/MyTemp/download/opencv/sources/modules/flann/include" /external:I "D:/MyTemp/download/opencv/sources/modules/imgproc/include" /external:I "D:/MyTemp/download/opencv/sources/modules/ml/include" /external:I "D:/MyTemp/download/opencv/sources/modules/photo/include" /external:I "D:/MyTemp/download/opencv/sources/modules/dnn/include" /external:I "D:/MyTemp/download/opencv/sources/modules/features2d/include" /external:I "D:/MyTemp/download/opencv/sources/modules/imgcodecs/include" /external:I "D:/MyTemp/download/opencv/sources/modules/videoio/include" /external:I "D:/MyTemp/download/opencv/sources/modules/calib3d/include" /external:I "D:/MyTemp/download/opencv/sources/modules/highgui/include" /external:I "D:/MyTemp/download/opencv/sources/modules/objdetect/include" /external:I "D:/MyTemp/download/opencv/sources/modules/stitching/include" /external:I "D:/MyTemp/download/opencv/sources/modules/ts/include" /external:I "D:/MyTemp/download/opencv/sources/modules/video/include" /external:I "D:/MyTemp/download/opencv/sources/modules/gapi/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyTemp\download\opencv\sources\build;D:\MyTemp\download\opencv\sources\include;D:\MyTemp\download\opencv\sources\modules\core\include;D:\MyTemp\download\opencv\sources\modules\flann\include;D:\MyTemp\download\opencv\sources\modules\imgproc\include;D:\MyTemp\download\opencv\sources\modules\ml\include;D:\MyTemp\download\opencv\sources\modules\photo\include;D:\MyTemp\download\opencv\sources\modules\dnn\include;D:\MyTemp\download\opencv\sources\modules\features2d\include;D:\MyTemp\download\opencv\sources\modules\imgcodecs\include;D:\MyTemp\download\opencv\sources\modules\videoio\include;D:\MyTemp\download\opencv\sources\modules\calib3d\include;D:\MyTemp\download\opencv\sources\modules\highgui\include;D:\MyTemp\download\opencv\sources\modules\objdetect\include;D:\MyTemp\download\opencv\sources\modules\stitching\include;D:\MyTemp\download\opencv\sources\modules\ts\include;D:\MyTemp\download\opencv\sources\modules\video\include;D:\MyTemp\download\opencv\sources\modules\gapi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyTemp\download\opencv\sources\build;D:\MyTemp\download\opencv\sources\include;D:\MyTemp\download\opencv\sources\modules\core\include;D:\MyTemp\download\opencv\sources\modules\flann\include;D:\MyTemp\download\opencv\sources\modules\imgproc\include;D:\MyTemp\download\opencv\sources\modules\ml\include;D:\MyTemp\download\opencv\sources\modules\photo\include;D:\MyTemp\download\opencv\sources\modules\dnn\include;D:\MyTemp\download\opencv\sources\modules\features2d\include;D:\MyTemp\download\opencv\sources\modules\imgcodecs\include;D:\MyTemp\download\opencv\sources\modules\videoio\include;D:\MyTemp\download\opencv\sources\modules\calib3d\include;D:\MyTemp\download\opencv\sources\modules\highgui\include;D:\MyTemp\download\opencv\sources\modules\objdetect\include;D:\MyTemp\download\opencv\sources\modules\stitching\include;D:\MyTemp\download\opencv\sources\modules\ts\include;D:\MyTemp\download\opencv\sources\modules\video\include;D:\MyTemp\download\opencv\sources\modules\gapi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\MyTemp\download\opencv\sources\build\lib\libopencv_gapi4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_highgui4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_ml4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_objdetect4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_photo4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_stitching4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_video4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_videoio4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_imgcodecs4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_dnn4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_calib3d4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_features2d4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_flann4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_imgproc4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_core4120.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/Release/BezierCurve.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/Release/BezierCurve.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/MyTemp/download/opencv/sources/build" /external:I "D:/MyTemp/download/opencv/sources/include" /external:I "D:/MyTemp/download/opencv/sources/modules/core/include" /external:I "D:/MyTemp/download/opencv/sources/modules/flann/include" /external:I "D:/MyTemp/download/opencv/sources/modules/imgproc/include" /external:I "D:/MyTemp/download/opencv/sources/modules/ml/include" /external:I "D:/MyTemp/download/opencv/sources/modules/photo/include" /external:I "D:/MyTemp/download/opencv/sources/modules/dnn/include" /external:I "D:/MyTemp/download/opencv/sources/modules/features2d/include" /external:I "D:/MyTemp/download/opencv/sources/modules/imgcodecs/include" /external:I "D:/MyTemp/download/opencv/sources/modules/videoio/include" /external:I "D:/MyTemp/download/opencv/sources/modules/calib3d/include" /external:I "D:/MyTemp/download/opencv/sources/modules/highgui/include" /external:I "D:/MyTemp/download/opencv/sources/modules/objdetect/include" /external:I "D:/MyTemp/download/opencv/sources/modules/stitching/include" /external:I "D:/MyTemp/download/opencv/sources/modules/ts/include" /external:I "D:/MyTemp/download/opencv/sources/modules/video/include" /external:I "D:/MyTemp/download/opencv/sources/modules/gapi/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyTemp\download\opencv\sources\build;D:\MyTemp\download\opencv\sources\include;D:\MyTemp\download\opencv\sources\modules\core\include;D:\MyTemp\download\opencv\sources\modules\flann\include;D:\MyTemp\download\opencv\sources\modules\imgproc\include;D:\MyTemp\download\opencv\sources\modules\ml\include;D:\MyTemp\download\opencv\sources\modules\photo\include;D:\MyTemp\download\opencv\sources\modules\dnn\include;D:\MyTemp\download\opencv\sources\modules\features2d\include;D:\MyTemp\download\opencv\sources\modules\imgcodecs\include;D:\MyTemp\download\opencv\sources\modules\videoio\include;D:\MyTemp\download\opencv\sources\modules\calib3d\include;D:\MyTemp\download\opencv\sources\modules\highgui\include;D:\MyTemp\download\opencv\sources\modules\objdetect\include;D:\MyTemp\download\opencv\sources\modules\stitching\include;D:\MyTemp\download\opencv\sources\modules\ts\include;D:\MyTemp\download\opencv\sources\modules\video\include;D:\MyTemp\download\opencv\sources\modules\gapi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyTemp\download\opencv\sources\build;D:\MyTemp\download\opencv\sources\include;D:\MyTemp\download\opencv\sources\modules\core\include;D:\MyTemp\download\opencv\sources\modules\flann\include;D:\MyTemp\download\opencv\sources\modules\imgproc\include;D:\MyTemp\download\opencv\sources\modules\ml\include;D:\MyTemp\download\opencv\sources\modules\photo\include;D:\MyTemp\download\opencv\sources\modules\dnn\include;D:\MyTemp\download\opencv\sources\modules\features2d\include;D:\MyTemp\download\opencv\sources\modules\imgcodecs\include;D:\MyTemp\download\opencv\sources\modules\videoio\include;D:\MyTemp\download\opencv\sources\modules\calib3d\include;D:\MyTemp\download\opencv\sources\modules\highgui\include;D:\MyTemp\download\opencv\sources\modules\objdetect\include;D:\MyTemp\download\opencv\sources\modules\stitching\include;D:\MyTemp\download\opencv\sources\modules\ts\include;D:\MyTemp\download\opencv\sources\modules\video\include;D:\MyTemp\download\opencv\sources\modules\gapi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\MyTemp\download\opencv\sources\build\lib\libopencv_gapi4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_highgui4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_ml4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_objdetect4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_photo4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_stitching4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_video4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_videoio4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_imgcodecs4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_dnn4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_calib3d4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_features2d4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_flann4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_imgproc4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_core4120.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/MinSizeRel/BezierCurve.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/MinSizeRel/BezierCurve.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/MyTemp/download/opencv/sources/build" /external:I "D:/MyTemp/download/opencv/sources/include" /external:I "D:/MyTemp/download/opencv/sources/modules/core/include" /external:I "D:/MyTemp/download/opencv/sources/modules/flann/include" /external:I "D:/MyTemp/download/opencv/sources/modules/imgproc/include" /external:I "D:/MyTemp/download/opencv/sources/modules/ml/include" /external:I "D:/MyTemp/download/opencv/sources/modules/photo/include" /external:I "D:/MyTemp/download/opencv/sources/modules/dnn/include" /external:I "D:/MyTemp/download/opencv/sources/modules/features2d/include" /external:I "D:/MyTemp/download/opencv/sources/modules/imgcodecs/include" /external:I "D:/MyTemp/download/opencv/sources/modules/videoio/include" /external:I "D:/MyTemp/download/opencv/sources/modules/calib3d/include" /external:I "D:/MyTemp/download/opencv/sources/modules/highgui/include" /external:I "D:/MyTemp/download/opencv/sources/modules/objdetect/include" /external:I "D:/MyTemp/download/opencv/sources/modules/stitching/include" /external:I "D:/MyTemp/download/opencv/sources/modules/ts/include" /external:I "D:/MyTemp/download/opencv/sources/modules/video/include" /external:I "D:/MyTemp/download/opencv/sources/modules/gapi/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyTemp\download\opencv\sources\build;D:\MyTemp\download\opencv\sources\include;D:\MyTemp\download\opencv\sources\modules\core\include;D:\MyTemp\download\opencv\sources\modules\flann\include;D:\MyTemp\download\opencv\sources\modules\imgproc\include;D:\MyTemp\download\opencv\sources\modules\ml\include;D:\MyTemp\download\opencv\sources\modules\photo\include;D:\MyTemp\download\opencv\sources\modules\dnn\include;D:\MyTemp\download\opencv\sources\modules\features2d\include;D:\MyTemp\download\opencv\sources\modules\imgcodecs\include;D:\MyTemp\download\opencv\sources\modules\videoio\include;D:\MyTemp\download\opencv\sources\modules\calib3d\include;D:\MyTemp\download\opencv\sources\modules\highgui\include;D:\MyTemp\download\opencv\sources\modules\objdetect\include;D:\MyTemp\download\opencv\sources\modules\stitching\include;D:\MyTemp\download\opencv\sources\modules\ts\include;D:\MyTemp\download\opencv\sources\modules\video\include;D:\MyTemp\download\opencv\sources\modules\gapi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyTemp\download\opencv\sources\build;D:\MyTemp\download\opencv\sources\include;D:\MyTemp\download\opencv\sources\modules\core\include;D:\MyTemp\download\opencv\sources\modules\flann\include;D:\MyTemp\download\opencv\sources\modules\imgproc\include;D:\MyTemp\download\opencv\sources\modules\ml\include;D:\MyTemp\download\opencv\sources\modules\photo\include;D:\MyTemp\download\opencv\sources\modules\dnn\include;D:\MyTemp\download\opencv\sources\modules\features2d\include;D:\MyTemp\download\opencv\sources\modules\imgcodecs\include;D:\MyTemp\download\opencv\sources\modules\videoio\include;D:\MyTemp\download\opencv\sources\modules\calib3d\include;D:\MyTemp\download\opencv\sources\modules\highgui\include;D:\MyTemp\download\opencv\sources\modules\objdetect\include;D:\MyTemp\download\opencv\sources\modules\stitching\include;D:\MyTemp\download\opencv\sources\modules\ts\include;D:\MyTemp\download\opencv\sources\modules\video\include;D:\MyTemp\download\opencv\sources\modules\gapi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>D:\MyTemp\download\opencv\sources\build\lib\libopencv_gapi4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_highgui4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_ml4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_objdetect4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_photo4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_stitching4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_video4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_videoio4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_imgcodecs4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_dnn4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_calib3d4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_features2d4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_flann4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_imgproc4120.dll.a;D:\MyTemp\download\opencv\sources\build\lib\libopencv_core4120.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/RelWithDebInfo/BezierCurve.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/RelWithDebInfo/BezierCurve.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\FileSys\AIProject\cg\games\101\Assignment4\code\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/FileSys/AIProject/cg/games/101/Assignment4/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\CMake\bin\cmake.exe -SE:/FileSys/AIProject/cg/games/101/Assignment4/code -BE:/FileSys/AIProject/cg/games/101/Assignment4/code/build --check-stamp-file E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\CMake\share\cmake-4.3\Modules\CMakeCInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeRCInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;D:\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVConfig-version.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVConfig.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVModules.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeCCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeCXXCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeRCCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/FileSys/AIProject/cg/games/101/Assignment4/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\CMake\bin\cmake.exe -SE:/FileSys/AIProject/cg/games/101/Assignment4/code -BE:/FileSys/AIProject/cg/games/101/Assignment4/code/build --check-stamp-file E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\CMake\share\cmake-4.3\Modules\CMakeCInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeRCInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;D:\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVConfig-version.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVConfig.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVModules.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeCCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeCXXCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeRCCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/FileSys/AIProject/cg/games/101/Assignment4/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+D:\CMake\bin\cmake.exe -SE:/FileSys/AIProject/cg/games/101/Assignment4/code -BE:/FileSys/AIProject/cg/games/101/Assignment4/code/build --check-stamp-file E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\CMake\share\cmake-4.3\Modules\CMakeCInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeRCInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;D:\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVConfig-version.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVConfig.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVModules.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeCCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeCXXCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeRCCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/FileSys/AIProject/cg/games/101/Assignment4/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\CMake\bin\cmake.exe -SE:/FileSys/AIProject/cg/games/101/Assignment4/code -BE:/FileSys/AIProject/cg/games/101/Assignment4/code/build --check-stamp-file E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\CMake\share\cmake-4.3\Modules\CMakeCInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeRCInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;D:\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Compiler\MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;D:\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Linker\MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\Windows.cmake;D:\CMake\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVConfig-version.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVConfig.cmake;D:\MyTemp\download\opencv\sources\build\OpenCVModules.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeCCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeCXXCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeRCCompiler.cmake;E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\4.3.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="E:\FileSys\AIProject\cg\games\101\Assignment4\code\main.cpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\FileSys\AIProject\cg\games\101\Assignment4\code\build\ZERO_CHECK.vcxproj">
+      <Project>{E69FC54C-8492-315A-85DD-16F4FAA69BFD}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

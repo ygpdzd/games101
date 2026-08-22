@@ -1,0 +1,10 @@
+^E:\FILESYS\AIPROJECT\CG\GAMES\101\ASSIGNMENT4\CODE\BUILD\CMAKEFILES\DAF04D2991177C558BD30CD484611E2D\GENERATE.STAMP.RULE
+setlocal
+D:\CMake\bin\cmake.exe -SE:/FileSys/AIProject/cg/games/101/Assignment4/code -BE:/FileSys/AIProject/cg/games/101/Assignment4/code/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/FileSys/AIProject/cg/games/101/Assignment4/code/build/BezierCurve.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
